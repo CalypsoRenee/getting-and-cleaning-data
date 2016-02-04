@@ -1,0 +1,90 @@
+---
+title: "README"
+output: html_document
+---
+
+# Getting and Cleaning Data Course Project
+##### by Calypso Fugit, February 2016
+
+### Assignment:
+> The purpose of this project is to demonstrate your ability to collect, work with, and clean a data set. The goal is to prepare tidy data that can be used for later analysis. You will be graded by your peers on a series of yes/no questions related to the project. You will be required to submit: 
+
+>     1.) a tidy data set as described below
+>     2.) a link to a Github repository with your script for performing the analysis, and
+>     3.) a code book that describes the variables, the data, and any transformations you performed to clean up
+        the data called CodeBook.md. You should also include a README.md in the repo with your scripts.
+
+> One of the most exciting areas in all of data science right now is wearable computing - see for example this article . 
+> Companies like Fitbit, Nike, and Jawbone Up are racing to develop the most advanced algorithms to attract new users. The 
+> data linked to from the course website represent data collected from the accelerometers from the Samsung Galaxy S 
+> smartphone.
+
+> You should create one R script called run_analysis.R that does the following:
+
+> 1. Merges the training and the test sets to create one data set.
+> 2. Extracts only the measurements on the mean and standard deviation for each measurement.
+> 3. Uses descriptive activity names to name the activities in the data set
+> 4. Appropriately labels the data set with descriptive variable names.
+> 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+### Files:
+
+1. README.md (this file)
+2. [run_analysis.R](https://github.com/calypsorenee/getting-and-cleaning-data//run_analysis.R) (the R script that contains the transformations)
+3. [CodeBook.md](https://github.com/calypsorenee/getting-and-cleaning-data//Codebook.md) (describes the variables, the data, the transformations, and the work that is performed to clean up the data)
+
+### Script ([run_analysis.R](https://github.com/calypsorenee/getting-and-cleaning-data//run_analysis.R))
+
+#### Assumptions & Setup
+
+1. The Samsung data set is downloaded directly from its online environment and into the working directory. The script then checks:
+
+      + If file exists, and creates one if not. 
+      + If not already done, it then downloads the file from the internet, unzips the file, and continues on.
+  
+2. Assumed installation of possibly useful packages [plyr](http://cran.r-project.org/web/packages/plyr/index.html),  [dplyr](http://cran.r-project.org/web/packages/dplyr/index.html), and [reshape2](http://cran.r-project.org/web/packages/reshape2/index.html), so opens them with library().
+
+#### Process
+
+[run_analysis.R](https://github.com/calypsorenee/getting-and-cleaning-data//run_analysis.R) goes through the following process to meet the project requirements. Please review the script for further insight.
+
+1.  Check whether the UCI HAR Dataset is available in the working directory.  If not, the script checks for the zip file, unzips it, and continues. 
+2. **Merge the training and the test sets to create one data set (Req. #1).**
+      
+      * Read in the Activity files, Subject files, and Features files. Evaluate the variable types in each.
+      * Merge each of the training and test data sets for each group (Activity, Subject, and Features) together, separately, using rbind. 
+      * Add activity labels from the "Activity Labels" data frame, and **use descriptive activity names to name the activities in the data set (Req. #3).**
+      * Read in file for features variable labels & assign variable names for columns. 
+      * Merge all three sets together, using cbind, to create one data frame.
+
+3. **Extract only the measurements on the mean and standard deviation for each measurement (Req. #2).**
+  
+      * Create a subset of the merged data frame to the columns representing only the mean and standard deviation.
+
+4. **Appropriately labels the data set with descriptive variable names (Req. #4).**
+  
+      * Clean up measurement/features variable names, so more readable by:
+      
+         * Make all column names legal for R by removing all parentheses and dashes.
+         * Change variable names to Camel Case (i.e., capitalize "Mean" and "Std") to increase readability.
+         * Change the names of the misnamed variables in the original data set (i.e., change "BodyBody" to "Body). 
+         * Change the "Activity" column to a factor for easier manipulation.
+            
+5. **Create a second, independent tidy data set with the average of each variable for each activity and each subject (Req. #5).**
+
+      * Melt data frame to get means (long-form data frame) using melt. 
+      * Calculate the average (mean) of each numeric column and return a wide-form data frame ("merged_summary" in the script) with the average for each subject/activity combination.
+      * As instructed, write this data frame to a text file called "tidydata.txt".
+
+### Data Source References
+
+1. Davide Anguita, Alessandro Ghio, Luca Oneto, Xavier Parra and Jorge L. Reyes-Ortiz. [Human Activity Recognition on Smartphones using a Multiclass Hardware-Friendly Support Vector Machine](https://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones). International Workshop of Ambient Assisted Living (IWAAL 2012). Vitoria-Gasteiz, Spain. Dec 2012.
+2. [Data Science, Wearable Computing and the Battle for the Throne as World's Top Sports Brand](http://www.insideactivitytracking.com/data-science-activity-tracking-and-the-battle-for-the-worlds-top-sports-brand/). Inside Activity Tracking. August 2013.
+
+### Project References
+
+1. [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+2. [Introduction to Reshape2](http://seananderson.ca/2013/10/19/reshape.html)
+3. [cbind and rbind](http://www.inside-r.org/r-doc/base/cbind)
+4. [Coursera Project Rules](https://www.coursera.org/learn/data-cleaning/peer/FIZtT/getting-and-cleaning-data-course-project)
+
