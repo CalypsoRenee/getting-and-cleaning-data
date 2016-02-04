@@ -1,7 +1,3 @@
----
-title: "README"
-output: html_document
----
 
 # Getting and Cleaning Data Course Project
 ##### by Calypso Fugit, February 2016
@@ -30,10 +26,10 @@ output: html_document
 ### Files:
 
 1. README.md (this file)
-2. [run_analysis.R](https://github.com/calypsorenee/getting-and-cleaning-data//run_analysis.R) (the R script that contains the transformations)
-3. [CodeBook.md](https://github.com/calypsorenee/getting-and-cleaning-data//Codebook.md) (describes the variables, the data, the transformations, and the work that is performed to clean up the data)
+2. [run_analysis.R](https://github.com/CalypsoRenee/getting-and-cleaning-data/blob/master/run_analysis.R) (the R script that contains the transformations)
+3. [CodeBook.md](https://github.com/CalypsoRenee/getting-and-cleaning-data/blob/master/Codebook.Rmd) (describes the variables, the data, the transformations, and the work that is performed to clean up the data)
 
-### Script ([run_analysis.R](https://github.com/calypsorenee/getting-and-cleaning-data//run_analysis.R))
+### Script ([run_analysis.R](https://github.com/CalypsoRenee/getting-and-cleaning-data/blob/master/run_analysis.R))
 
 #### Assumptions & Setup
 
@@ -46,7 +42,7 @@ output: html_document
 
 #### Process
 
-[run_analysis.R](https://github.com/calypsorenee/getting-and-cleaning-data//run_analysis.R) goes through the following process to meet the project requirements. Please review the script for further insight.
+[run_analysis.R](https://github.com/CalypsoRenee/getting-and-cleaning-data/blob/master/run_analysis.R) goes through the following process to meet the project requirements. Please review the script for further insight.
 
 1.  Check whether the UCI HAR Dataset is available in the working directory.  If not, the script checks for the zip file, unzips it, and continues. 
 2. **Merge the training and the test sets to create one data set (Req. #1).**

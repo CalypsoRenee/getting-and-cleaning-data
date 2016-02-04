@@ -6,7 +6,7 @@ library(dplyr)
 library(reshape2)
 
 #Set working directory
-setwd("~/Desktop/DataScienceSpecialization/GettingAndCleaningData/Assignment")
+setwd("~/Desktop/DataScienceSpecialization/GettingAndCleaningData/Assignment/getting-and-cleaning-data")
 
 #Download data set
 if(!file.exists("./data")){dir.create("./data")}
@@ -120,9 +120,6 @@ head(merged_summary,10)
 #Write tidy data set to txt file
 write.table(merged_summary, "tidydata.txt", row.names = FALSE, sep = "\t")
 
-
-
-str(merged_summary)
 
 
 

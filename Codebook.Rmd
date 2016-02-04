@@ -1,7 +1,3 @@
----
-title: "CodeBook"
-output: html_document
----
 
 ## Getting & Cleaning Data Course Project
 
@@ -127,4 +123,4 @@ The following transformations were perfomed on the original data:
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 For further data cleanup details, please review:
-[README](https://github.com/calypsorenee/____/README.md) and [run_analysis.R](https://github.com/calypsorenee/____/run_analysis.R).
+[README](https://github.com/CalypsoRenee/getting-and-cleaning-data/blob/master/README.Rmd) and [run_analysis.R](https://github.com/CalypsoRenee/getting-and-cleaning-data/blob/master/run_analysis.R).
