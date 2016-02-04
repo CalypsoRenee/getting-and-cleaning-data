@@ -1,5 +1,9 @@
 ## Getting & Cleaning Data - Week 4 Assignment
 
+########################################################################################
+# Setup Environment & Get Data
+########################################################################################
+
 #Load some handy packages
 library(plyr)
 library(dplyr)
@@ -101,8 +105,6 @@ names(subsetAllData)<-gsub("-mean", "Mean", names(subsetAllData))
 names(subsetAllData)<-gsub("-std", "Std", names(subsetAllData))
 names(subsetAllData)<-gsub("\\()", "", names(subsetAllData))
 
-colNames[i] = gsub("\\()","",colNames[i])
-
 ########################################################################################
 # Create 2nd,independent data set with averages of each variable for each 
 # activity and each subject
@@ -110,12 +112,12 @@ colNames[i] = gsub("\\()","",colNames[i])
 
 #Melt data frame to get means (long-form data frame)
 meltData <- melt(subsetAllData, id = c("Subject", "Activity"), variable.name="Measurement", value.name = "Value")
-head(meltData, 50)
+head(meltData)
 
 #Create summary data frame & compute means (wide-form tidy data frame)
 merged_summary <- dcast(meltData, Subject + Activity ~ Measurement,
                         mean, value.var = "Value")
-head(merged_summary,10)
+head(merged_summary)
 
 #Write tidy data set to txt file
 write.table(merged_summary, "tidydata.txt", row.names = FALSE, sep = "\t")
